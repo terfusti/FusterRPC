@@ -137,10 +137,10 @@ size_t JsonWriteRichPresenceObj(char* dest,
                 // DISGUSTING, i need to use the brain to think of a better way. I tried using loops, but the array would have to be created outside the loop
                 // and if the buttons failed the tests, an empty button object would be sent with the json
                 if (
-                    (presence->buttons[0].label && presence->buttons[0].label[0]) &&
-                    (presence->buttons[0].url && presence->buttons[0].url[0]) &&
-                    (presence->buttons[1].label && presence->buttons[1].label[0]) &&
-                    (presence->buttons[1].url && presence->buttons[1].url[0])
+                    ((presence->buttons[0].label && presence->buttons[0].label[0]) &&
+                    (presence->buttons[0].url && presence->buttons[0].url[0])) ||
+                    ((presence->buttons[1].label && presence->buttons[1].label[0]) &&
+                    (presence->buttons[1].url && presence->buttons[1].url[0]))
                     )
                 {
                     WriteArray buttons{ writer, "buttons" };

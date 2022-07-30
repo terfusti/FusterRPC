@@ -14,7 +14,6 @@
 
 int main()
 {
-
 	FusterPresence::Init();
 	std::signal(SIGINT, [](int)
 		{
@@ -22,15 +21,12 @@ int main()
 		});
 
 	do
-	{
-		
+	{	
 		Discord_RunCallbacks();
 		std::this_thread::sleep_for(std::chrono::milliseconds{ 16 });
 
 	} while (!FusterPresence::interrupted);
 
 	FusterPresence::Shutdown();
-
-
 	return 0;
 }

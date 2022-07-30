@@ -81,9 +81,9 @@ namespace Config
 				writer.Key("application_id");
 				writer.String("Go to https://discord.com/developers/applications, create application, and put application id here");
 				writer.Key("state");
-				writer.String("this goes above details in profile");
+				writer.String("this goes under details in profile");
 				writer.Key("details");
-				writer.String("this goes under state in profile");
+				writer.String("this goes above state in profile");
 				writer.Key("largeImageKey");
 				writer.String("From dev portal, go to Rich Presence, then add asset and put name here");
 				writer.Key("largeImageText");
