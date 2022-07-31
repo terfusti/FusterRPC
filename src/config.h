@@ -3,6 +3,7 @@
 
 #include <rapidjson/document.h>
 #include <discord_rpc.h>
+
 #include <string>
 
 namespace Config

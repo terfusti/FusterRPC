@@ -1,16 +1,16 @@
 
 #include "discord_presence.h"
+
 #include <rapidjson/rapidjson.h>
 #include <serialization.h>
 
 #include <iostream>
-#include <thread>
+#include <cassert>
 #include <chrono>
 #include <csignal>
 #include <cstdlib>
 #include <cstdio>
-#include <cassert>
-
+#include <thread>
 
 int main()
 {

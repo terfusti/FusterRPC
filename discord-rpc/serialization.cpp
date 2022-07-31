@@ -134,23 +134,33 @@ size_t JsonWriteRichPresenceObj(char* dest,
                 }
 
 
-                // DISGUSTING, i need to use the brain to think of a better way. I tried using loops, but the array would have to be created outside the loop
-                // and if the buttons failed the tests, an empty button object would be sent with the json
-                if (
-                    ((presence->buttons[0].label && presence->buttons[0].label[0]) &&
-                    (presence->buttons[0].url && presence->buttons[0].url[0])) ||
-                    ((presence->buttons[1].label && presence->buttons[1].label[0]) &&
-                    (presence->buttons[1].url && presence->buttons[1].url[0]))
-                    )
-                {
-                    WriteArray buttons{ writer, "buttons" };
-                    for (const auto& button : presence->buttons)
+                
+                static constexpr auto isValid{ [](const DiscordButton& button) -> bool
+                    {
+                        return (button.label && button.label[0]) && (button.url && button.url[0]);
+                    } };
+
+                static constexpr auto writeButton{ [](JsonWriter& writer, const DiscordButton& button)
                     {
                         WriteObject buttonObj{ writer };
                         WriteOptionalString(writer, "label", button.label);
                         WriteOptionalString(writer, "url", button.url);
+                    } };
+
+                if (isValid(presence->buttons[0]) || isValid(presence->buttons[1]))
+                {
+                    WriteArray buttons{ writer, "buttons" };
+                    DiscordButton* button{};
+                    if (isValid(presence->buttons[0]))
+                    {
+                        writeButton(writer, presence->buttons[0]);
+                    }
+                    if (isValid(presence->buttons[1]))
+                    {
+                        writeButton(writer, presence->buttons[1]);
                     }
                 }
+
 
 
                 if ((presence->partyId && presence->partyId[0]) || presence->partySize ||

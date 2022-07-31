@@ -1,11 +1,5 @@
 #include "config.h"
 
-#include <cstdio>
-#include <iostream>
-#include <fstream>
-#include <ostream>
-#include <thread>
-
 #include <rapidjson/allocators.h>
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/istreamwrapper.h>
@@ -13,8 +7,11 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/prettywriter.h>
 
-
-
+#include <cstdio>
+#include <iostream>
+#include <fstream>
+#include <ostream>
+#include <thread>
 
 namespace Config
 {

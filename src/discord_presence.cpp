@@ -8,8 +8,6 @@
 namespace FusterPresence
 {
 
-
-
 	void Init() noexcept
 	{
 		Config::Load();
@@ -19,8 +17,7 @@ namespace FusterPresence
 		handlers.ready = OnReady;
 		handlers.errored = OnError;
 		Discord_Initialize(Config::applicationId.c_str(), &handlers, 1, nullptr);
-		
-
+		std::cout << "Initialized!\n";
 
 		Discord_UpdatePresence(&Config::presence);
 
@@ -39,6 +36,5 @@ namespace FusterPresence
 	{
 		std::cout << "Error code " << errorCode << ": " << message << '\n';
 	}
-
 
 }

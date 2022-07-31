@@ -7,18 +7,10 @@ namespace FusterPresence
 {
 	inline volatile bool interrupted{ false };
 
-
 	void Init() noexcept;
-
 	void Shutdown() noexcept;
-
 	void OnReady(const DiscordUser* user) noexcept;
-
 	void OnError(int errorCode, const char* message) noexcept;
-
-
-
-
 }
 
 #endif // !DISCORD_PRESENCE_H_TERFUSTI
